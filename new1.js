@@ -1,9 +1,9 @@
 import {requestFrame,canvasXY,beakerXY,shelfXY,weightmachineXY,gcrownXY,verticalsupportXY,horizontalrodXY,springbalanceXY,woodencubeXY,scrownXY,pointerXY,springXY,fontXY,fontXY1,bigbeakerXY,waterXY,waterXY1,waterXY2,waterXY3} from "./datafilesObjects.js";
-import {arr,value,Moves,weight_diff_copper,weight_diff_iron,den_city,density} from "./new.js";
+import {arr,value,Moves,weight_diff_copper,weight_diff_iron,den_city,density,copper_iron} from "./new.js";
 let MovesYCount=0;
 let xy=0,yx=0;
 let MovesXCount=0;
-
+let Moves1=0;
 function callme(){
   MovesXCount=0;
   MovesYCount=0;
@@ -13,9 +13,9 @@ function pointerreturns(){
   yx++;
   canvasXY.clearCanvas();
 
-  if (yx<Moves){
-    pointerXY.y-=pointerXY.dy;
-    springXY.height-=springXY.dh;
+  if (yx<Moves/0.4){
+    pointerXY.y-=0.4*pointerXY.dy;
+    springXY.height-=0.4*springXY.dh;
     pointerXY.renderPointer();
     springXY.renderspring();
     requestFrame(pointerreturns);
@@ -53,7 +53,7 @@ function horizontalMovesY(){
         springXY.y+=springXY.dy;
         pointerXY.y+=pointerXY.dy;
         scrownXY.y+=0.4*scrownXY.dy;
-        if (xy==500){
+        if (xy==600){
           
           pointerreturns();
           callme();
@@ -234,11 +234,11 @@ function horizontalMovesY(){
           waterXY.height-=waterXY.dh;
           requestFrame(waterRisesXY);
           }   
-          else if (MovesYCount<190 && value==182 ){
+          else if (MovesYCount<190 && value==185 ){
             waterXY.height-=waterXY.dh;
             requestFrame(waterRisesXY);
             }    
-            else if (MovesYCount<210 && value==216 ){
+            else if (MovesYCount<210 && value==230 ){
               waterXY.height-=waterXY.dh;
               requestFrame(waterRisesXY);
               }     
@@ -274,5 +274,50 @@ function horizontalMovesY(){
 //  requestFrame(horizontalMovesY);
 //  StartExperiment.disabled = true;
 // });
+function Validateform(){
+  if(den_city){
+    Moves1=copper_iron[0];
+  }
+  else{
+    Moves1=copper_iron[1];
+  }
+  var uservalue=document.getElementById("meet");
+  if(uservalue.value.trim()==""){
+      alert("plz enter the value");
+      uservalue.style.border="solid 3px red";
+      return false;
+  }
 
-    export{horizontalMovesY,waterRisesXY1,waterflows,waterflowsXY3,waterRisesXY};
+  if(Math.round(uservalue.value)!=Math.round(Moves1)){
+
+      alert(`better luck next time the current answer is ${Moves1}`);
+      uservalue.style.border="solid 3px red";
+      return false;
+  }
+
+  if(Math.round(uservalue.value)==Math.round(Moves1)){
+      alert("You won Congratulations!!!");
+      uservalue.style.border="solid 3px green";
+      return true;
+  }
+
+}
+// function Validatematerial(){
+//   var material=document.getElementById("me");
+//   if(material.value.trim()==""){
+//     alert("plz enter the value");
+//     material.style.border="solid 3px red";
+//     return false;
+//   }
+//   if((Moves1==9 && String(material.value)=="copper")||(Moves1==8 && material.value=="iron")){
+//     alert("You won Congratulations!!!");
+//     material.style.border="solid 3px green";
+//     return true;
+//   }
+//   else{
+//     alert("Please Try Again");
+//     return false;
+//   }}
+
+
+    export{horizontalMovesY,waterRisesXY1,waterflows,waterflowsXY3,waterRisesXY,Validateform};

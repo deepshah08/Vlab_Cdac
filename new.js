@@ -4,6 +4,7 @@ let Moves=0;
 let MovesYCount=0;
 let MovesXCount=0;
 let arr=[80,114,148,185,230];
+let copper_iron=[9,8];
 let weight_diff_copper =[7.77778,
   11.6667,
   15.5556,
@@ -32,10 +33,10 @@ function gcrownMovesXY(){
     canvasXY.clearCanvas();
 
    
-    if(MovesXCount<770  ){
+    if(MovesXCount<770 ){
      
      gcrownXY.x -= gcrownXY.dx;
-     if (MovesYCount<550  ){
+     if (MovesYCount<550 ){
      gcrownXY.y += gcrownXY.dy;
     }
     console.log(gcrownXY.x,gcrownXY.y);
@@ -149,4 +150,4 @@ function pointerMovesY() {
           
   }
 
-export {gcrownMovesXY,scrownMovesXY,density,den_city,arr,value,weight_diff_iron,weight_diff_copper,Moves};
+export {gcrownMovesXY,scrownMovesXY,density,den_city,arr,value,weight_diff_iron,weight_diff_copper,Moves,copper_iron};

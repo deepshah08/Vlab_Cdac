@@ -1,6 +1,6 @@
 import { requestFrame,canvasXY,beakerXY,shelfXY,weightmachineXY,gcrownXY,verticalsupportXY,horizontalrodXY,springbalanceXY,woodencubeXY,scrownXY,pointerXY,springXY,fontXY,fontXY1,bigbeakerXY,waterXY,waterXY1,waterXY2,waterXY3} from "./datafilesObjects.js";
 import { gcrownMovesXY,scrownMovesXY } from "./new.js";
-import { horizontalMovesY,waterRisesXY1,waterflows,waterflowsXY3,waterRisesXY } from "./new1.js";
+import { horizontalMovesY,waterRisesXY1,waterflows,waterflowsXY3,waterRisesXY,Validateform } from "./new1.js";
 import {sbeakerMovesXY} from "./new2.js";
 
 let MovesYCount=0;
@@ -36,7 +36,9 @@ const CopperCrown = document.getElementById("task1");
 const IronCrown = document.getElementById("task2");
 const StartExperiment = document.getElementById("task3a");
 const ToMeasure = document.getElementById("task3b");
-
+"changed 1 line"
+const Submit = document.getElementById("task9");
+const Material = document.getElementById("task10");
 let btn = [CopperCrown,IronCrown,StartExperiment,ToMeasure];
 const controlAnimeBtnArray = [false, false, false, false];
 const addClass = ['border-5', 'border-light'];
@@ -63,7 +65,7 @@ const controlAnimeBtnFunc = () => {
   }
 
   
-  IronCrown.disabled=true;
+  // IronCrown.disabled=true;
   StartExperiment.disabled=true;
   ToMeasure.disabled=true;
 
@@ -92,6 +94,11 @@ IronCrown.addEventListener("click", () => { //btn2 press Animation 2
     MovesYCount=0;
     scrownMovesXY();
     CopperCrown.disabled = true;
+
+    setTimeout(() => {
+      disableBtnIndex(2, true); //Enable next button with the rendering of next static animation
+      controlAnimeBtnFunc(); //Activate the next button and add border
+    }, 7600);
    });
 
 
@@ -115,4 +122,19 @@ ToMeasure.addEventListener("click", () => { //btn2 press Animation 2
  MovesYCount=0;
  requestFrame(sbeakerMovesXY);
  ToMeasure.disabled = true;
+ disableBtnIndex(3,false);
+
+//  setTimeout(() => {
+//   disableBtnIndex(0, true); //Enable next button with the rendering of next static animation
+//   disableBtnIndex(1, true); //Enable next button with the rendering of next static animation
+//   controlAnimeBtnFunc(); //Activate the next button and add border
+// }, 5000);
 });
+
+Submit.addEventListener("click",() => {
+  Validateform();
+});
+
+// Material.addEventListener("click",() => {
+//   Validatematerial();
+// });
