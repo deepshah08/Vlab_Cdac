@@ -297,6 +297,13 @@ function Validateform(){
 
   if(Math.round(uservalue.value)==Math.round(Moves1)){
       alert("You won Congratulations!!!");
+      var mat=prompt("Guess the material of crown");
+      if((mat.toLowerCase()=="copper" && Moves1==9) ||(mat.toLowerCase()=="iron" && Moves1==8)){
+        alert("Correct");
+      }
+      else{
+        alert("Inorrect");
+      }
       uservalue.style.border="solid 3px green";
       return true;
   }
