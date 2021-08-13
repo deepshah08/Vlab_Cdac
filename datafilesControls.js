@@ -74,7 +74,7 @@ CopperCrown.addEventListener("click", () => { //btn2 press Animation 2
  MovesYCount=0;
  gcrownMovesXY();
  CopperCrown.disabled = true;
- //IronCrown.disabled=true;
+ IronCrown.disabled=true;
 //  disableBtnIndex(0,false);
 //  disableBtnIndex(1,false);
 //  setTimeout(() => { 
